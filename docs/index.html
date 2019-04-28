@@ -127,7 +127,8 @@ function cleardata(){
 // Function for calculating data
 function calcMPR(){
 //Variables + Math
-var NOso = document.getElementById("NOSO").value;
+
+var NOSO = document.getElementById("NOSO").value;
 var SOTime = (NOSO * 15);
 var lunchBreakValue = document.getElementById("LOLB").value
 var inTime = document.getElementById("IN-time").value;
@@ -142,7 +143,9 @@ var absinTime = (+splitedInTime[0] * (1 * 60)) + (splitedInTime[1] * 1);
 var absOutTime = (+splitedOutTime[0] * (1 * 60)) + (splitedOutTime[1] * 1);
 var clockedTime = Math.abs(absOutTime - absinTime)
 var totalTime = (lunchBreakValue - clockedTime)+SOTime;
-var totalMPR = Math.abs( totalTime / (nORS+NOso));
+var TotalRooms = parseInt(NOSO, 10) + parseInt(nORS, 10);
+console.log(TotalRooms);
+var totalMPR = Math.abs( totalTime / TotalRooms);
 // Rounding since it not only looks better but is simpler to deal with.
 var MPRS = Math.round(totalMPR);
 console.log(MPRS);
