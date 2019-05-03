@@ -76,6 +76,10 @@
         <input type="number" name="Number-Of-Stay-Overs" id="NOSO"> <br>     <p class="text-muted">Number of stayovers completed</p>
         
     </div>
+    <div class="col">
+        <input type="number" name="Number-Of-Deep-Cleans" id="NODC"> <br>     <p class="text-muted">Number of Deep Cleans completed</p>
+        
+    </div>
 </div>
 
 </div>
@@ -114,6 +118,7 @@
     document.getElementById("NORS").value = "17";
     document.getElementById("LOLB").value = '30';
     document.getElementById("NOSO").value = '2';
+    document.getElementById("NODC").value = '1';
   });
 // Function for clearing data
 function cleardata(){
@@ -122,15 +127,17 @@ function cleardata(){
     document.getElementById("NORS").value = "27";
     document.getElementById("LOLB").value = '30';
     document.getElementById("NOSO").value = '4';
+    document.getElementById("NODC").value = '2';
      document.getElementById("Alerts").remove;
 }
 // Function for calculating data
 function calcMPR(){
 //Variables + Math
-
+var NODC = document.getElementById("NODC").value;
+var DCTime = (NODC * 60);
 var NOSO = document.getElementById("NOSO").value;
 var SOTime = (NOSO * 15);
-var lunchBreakValue = document.getElementById("LOLB").value
+var lunchBreakValue = document.getElementById("LOLB").value;
 var inTime = document.getElementById("IN-time").value;
 var outTime = document.getElementById("OUT-time").value;
 var nORS = document.getElementById("NORS").value;
@@ -142,8 +149,9 @@ var splitedOutTime = outTime.split(":");
 var absinTime = (+splitedInTime[0] * (1 * 60)) + (splitedInTime[1] * 1);
 var absOutTime = (+splitedOutTime[0] * (1 * 60)) + (splitedOutTime[1] * 1);
 var clockedTime = Math.abs(absOutTime - absinTime)
-var totalTime = (lunchBreakValue - clockedTime)+SOTime;
-var TotalRooms = parseInt(NOSO, 10) + parseInt(nORS, 10);
+var totalTime = (lunchBreakValue - clockedTime)+SOTime+DCTime;
+var TotalRooms = parseInt(NOSO, 10) + parseInt(nORS, 10) + parseInt(NODC, 10);
+console.log(totalTime);
 console.log(TotalRooms);
 var totalMPR = Math.abs( totalTime / TotalRooms);
 // Rounding since it not only looks better but is simpler to deal with.
