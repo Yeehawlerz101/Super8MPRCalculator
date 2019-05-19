@@ -30,7 +30,7 @@
   <br>
         <h2>Super 8 MPR Calculator</h2>
         <hr>
-
+    <p class="text-muted">Version: 1 "Navy Reindeer"</p>
 
 </div>
 </div>
@@ -134,9 +134,7 @@ function cleardata(){
 function calcMPR(){
 //Variables + Math
 var NODC = document.getElementById("NODC").value;
-var DCTime = (NODC * 60);
 var NOSO = document.getElementById("NOSO").value;
-var SOTime = (NOSO * 15);
 var lunchBreakValue = document.getElementById("LOLB").value;
 var inTime = document.getElementById("IN-time").value;
 var outTime = document.getElementById("OUT-time").value;
@@ -149,7 +147,7 @@ var splitedOutTime = outTime.split(":");
 var absinTime = (+splitedInTime[0] * (1 * 60)) + (splitedInTime[1] * 1);
 var absOutTime = (+splitedOutTime[0] * (1 * 60)) + (splitedOutTime[1] * 1);
 var clockedTime = Math.abs(absOutTime - absinTime)
-var totalTime = (lunchBreakValue - clockedTime)+SOTime+DCTime;
+var totalTime = (lunchBreakValue - clockedTime);
 var TotalRooms = parseInt(NOSO, 10) + parseInt(nORS, 10) + parseInt(NODC, 10);
 console.log(totalTime);
 console.log(TotalRooms);
